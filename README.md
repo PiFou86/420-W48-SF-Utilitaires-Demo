@@ -1,5 +1,14 @@
 # Utilitaires pour le cours 420-W48-SF
 
+## Interprétation des erreurs dans la console (port série)
+
+L'ESP32 peut afficher des informations babares et redémarrer. Pour décoder ses informations vous pouvez ajouter les couples clefs/valeurs suivantes dans votre configuration platformio.ini :
+
+```ini
+monitor_filters = esp32_exception_decoder
+build_type = debug
+```
+
 ## Journalisation
 
 L'objet global ```Logger``` permet de journaliser les messages. Ces messages peuvent avoir plusieurs niveaux de priorités : error, warning, info, verbose. Voir méthode ```Program::demoLogger()``` pour un exemple.

@@ -20,10 +20,17 @@ String Device::getId() {
 #endif
 
 }
-
+#ifdef ARDUINO_AVR_UNO
 SimpleCollection<uint16_t> Device::getI2CAddresses() {
+#elif ESP32
+std::vector<uint16_t> Device::getI2CAddresses() {
+#endif
   byte error, address;
+#ifdef ARDUINO_AVR_UNO
   SimpleCollection<uint16_t> i2cAddresses;
+#elif ESP32
+  std::vector<uint16_t> i2cAddresses;
+#endif
 
   Logger.infoln(F("Scanning I2C devices..."));
 

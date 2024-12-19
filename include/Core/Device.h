@@ -18,7 +18,11 @@ struct WiFiNetwork {
 class Device {
  public:
   static String getId();
+  #ifdef ARDUINO_AVR_UNO
   static SimpleCollection<uint16_t> getI2CAddresses();
+  #elif ESP32
+  static std::vector<uint16_t> getI2CAddresses();
+  #endif
 
 #ifdef ESP32
   static std::vector<WiFiNetwork> getWiFiNetworks();

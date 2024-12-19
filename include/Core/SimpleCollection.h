@@ -1,6 +1,7 @@
 #pragma once
 
 // vector is not supported in Arduino
+#ifdef ARDUINO_AVR_UNO
 template <typename ElementType>
 class SimpleCollection {
  private:
@@ -93,3 +94,4 @@ class SimpleCollection {
   unsigned int capacity() const { return this->m_capacity; }
 
 };
+#endif

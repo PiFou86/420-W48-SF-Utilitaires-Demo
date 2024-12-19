@@ -23,6 +23,7 @@ BasicCommandInterpretor::BasicCommandInterpretor(Stream &stream)
 void BasicCommandInterpretor::tick() {
   while (this->m_stream.available()) {
     char c = this->m_stream.read();
+    this->m_stream.print(c);
     if (c == '\n') {
       this->executeCommand(m_lastSerialInput);
       this->m_lastSerialInput = "";
@@ -44,7 +45,7 @@ bool BasicCommandInterpretor::executeCommand(const String &command) {
   cmd.trim();
   parameters.trim();
 
-  Logger.println(String(F("> ")) + cmd + " " + parameters);
+  Logger.verboseln(String(F("> ")) + cmd + " " + parameters);
 
   return this->interpret(cmd, parameters);
 }
@@ -75,7 +76,11 @@ bool BasicCommandInterpretor::interpret(const String &command,
     String deviceType = parameters;
 
     if (deviceType == "i2c") {
+      #ifdef ARDUINO_AVR_UNO
       SimpleCollection<uint16_t> i2cAddresses = Device::getI2CAddresses();
+      #elif ESP32
+      std::vector<uint16_t> i2cAddresses = Device::getI2CAddresses();
+      #endif
       Logger.println(F("I2C addresses:"));
       for (size_t i = 0; i < i2cAddresses.size(); i++) {
         Logger.println(String(F("  - 0x")) +

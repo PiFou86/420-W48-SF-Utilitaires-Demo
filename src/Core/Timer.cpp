@@ -2,8 +2,11 @@
 
 #include <Arduino.h>
  
-Timer::Timer(unsigned long interval, Callback callback)
-    : m_nextTime(0), m_interval(interval), m_callback(callback) {
+#ifdef ARDUINO_AVR_UNO
+  Timer::Timer(unsigned long interval, Callback callback) {
+#elif ESP32
+  Timer::Timer(unsigned long interval, std::function<void()> callback) {
+  #endif
   ;
 }
 

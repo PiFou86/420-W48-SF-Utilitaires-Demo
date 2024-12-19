@@ -1,5 +1,11 @@
 # Utilitaires pour le cours 420-W48-SF
 
+Les codes suivants peuvent être réutilisés. Simplement spécifier en commentaire la provenance.
+
+Et ne faites pas comme :
+
+![Pas de temps pour prendre du recul !](https://github.com/user-attachments/assets/028c8de4-8e1b-4f86-b890-d7c6353383a8)
+
 ## Interprétation des erreurs dans la console (port série)
 
 L'ESP32 peut afficher des informations babares et redémarrer. Pour décoder ses informations vous pouvez ajouter les couples clefs/valeurs suivantes dans votre configuration platformio.ini :
@@ -83,6 +89,40 @@ Program::Program() : m_basicCommandInterpretor(nullptr) {
 void Program::loop() {
   this->m_basicCommandInterpretor->tick();
 }
+```
+
+Affichage sur le port série :
+
+```
+00:02:15.005 - > help 
+00:02:15.005 - 
+00:02:15.006 -   specific
+00:02:15.006 - 
+00:02:15.006 - Available commands:
+00:02:15.006 -   hello
+00:02:15.017 -   id
+00:02:15.017 -   set <key> <value>
+00:02:15.017 -   get <key>
+00:02:15.017 -   scan i2c|wifi
+00:02:15.017 -   reboot
+00:02:15.028 -   flash
+00:02:15.028 -   network
+00:02:15.028 - 
+00:02:15.028 -   help
+00:02:35.117 - > network 
+00:02:35.117 - Network: 
+00:02:35.117 -   - SSID: 
+00:02:35.117 -   - IP: 0.0.0.0
+00:02:35.118 -   - MAC: CC:DB:A7:15:8F:6C
+00:02:35.129 -   - RSSI: 0 dBm
+00:02:35.129 -   - Channel: 0
+00:02:35.129 -   - DNS: 0.0.0.0
+00:02:35.129 -   - DNS: 0.0.0.0
+00:02:35.140 -   - SSID:
+00:03:59.407 - > id 
+00:03:59.407 - ID: 15a7dbcc
+00:04:19.505 - > reboot 
+00:04:19.506 - INFO: Rebooting...
 ```
 
 ## Gestion du temps

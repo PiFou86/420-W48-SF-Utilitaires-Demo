@@ -1,0 +1,29 @@
+{
+    "name": "420-W48-SF-Utilitaires",
+    "version": "1.0.0",
+    "description": "Une bibliothèque la journalisation, la gestion du temps et l'interprétation de commandes",
+    "keywords": ["utils", "demo", "platformio", "embedded"],
+    "authors": [
+      {
+        "name": "Pierre-François Léon",
+        "email": "pierrefrancois.leon@gmail.com",
+        "maintainer": true
+      }
+    ],
+    "excludeFiles": [
+      "main.cpp",
+      "Program.cpp",
+      "Program.h"
+    ],
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/PiFou86/420-W48-SF-Utilitaires-Demo.git"
+    },
+    "license": "MIT",
+    "frameworks": ["arduino"],
+    "platforms": [
+      "atmelavr",
+      "espressif32"
+    ]
+  }
+  

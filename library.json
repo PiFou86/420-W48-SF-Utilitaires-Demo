@@ -24,6 +24,12 @@
     "platforms": [
       "atmelavr",
       "espressif32"
-    ]
-  }
+    ],
+    "dependencies": [
+    {
+      "name": "WiFi",
+      "platforms": "espressif32"
+    }
+  ]
+}
   

@@ -29,6 +29,10 @@
     {
       "name": "WiFi",
       "platforms": "espressif32"
+    },
+    {
+        "name": "Wire",
+        "platforms": "espressif32"
     }
   ]
 }
